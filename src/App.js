@@ -47,6 +47,29 @@ class App extends React.Component {
       cursor: "pointer"
     };
 
+    let persons = null;
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler.bind(this, "Max!")}
+            changed={this.nameChangedHandler}
+          >
+            Mi Hobbies: Racing
+          </Person>
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+          />
+        </div>
+      );
+    }
     return (
       <div className="App">
         <h1>App component!</h1>
@@ -54,15 +77,18 @@ class App extends React.Component {
         <button style={style} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
-        {/*}
+        {/*
         Alterantive way to the button onClick function from above
         <button onClick={() => this.switchNameHandler("Maximilian")}>
           Switch Name
         </button>
-        {*/}
+        */}
 
-        {/*} ternary expression to render the components conditionally{*/}
-        {this.state.showPersons === true ? (
+        {persons}
+        {/* this is an alternate way to do the same that the code from below  */}
+
+        {/* ternary expression to render the components conditionally*/}
+        {/* {this.state.showPersons === true ? (
           <div>
             <Person
               name={this.state.persons[0].name}
@@ -81,7 +107,7 @@ class App extends React.Component {
               age={this.state.persons[2].age}
             />
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     );
   }
