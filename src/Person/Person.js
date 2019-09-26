@@ -8,6 +8,7 @@ const Person = props => {
       </p>
       {/*children refers to any elements between the open an closing tab of our component!*/}
       <p> {props.children}</p>
+      <input type="text" onChange={props.changed} value={props.name} />
     </div>
   );
 };
