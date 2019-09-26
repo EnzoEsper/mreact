@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import Person from "./Person/Person";
 
 const App = props => {
-  const [personsState, setPersonsState] = useState[
-    {
-      persons: [
-        { name: "Max", age: 16 },
-        { name: "Manu", age: 23 },
-        { name: "Alex", age: 15 }
-      ]
-    }
-  ];
+  const [personsState, setPersonsState] = useState({
+    persons: [
+      { name: "Max", age: 16 },
+      { name: "Manu", age: 23 },
+      { name: "Alex", age: 15 }
+    ]
+  });
 
   const switchNameHandler = () => {
     setPersonsState({
