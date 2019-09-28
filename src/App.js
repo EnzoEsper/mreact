@@ -49,7 +49,8 @@ class App extends React.Component {
 
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
@@ -89,6 +90,9 @@ class App extends React.Component {
           /> */}
         </div>
       );
+
+      // changing the color of the button if the list of persons is showed
+      style.backgroundColor = "red";
     }
     return (
       <div className="App">
