@@ -1,5 +1,6 @@
 import React from "react";
 import Person from "./Person/Person";
+import Radium from "radium";
 
 class App extends React.Component {
   state = {
@@ -54,7 +55,11 @@ class App extends React.Component {
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
-      cursor: "pointer"
+      cursor: "pointer",
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black"
+      }
     };
 
     let persons = null;
@@ -93,6 +98,10 @@ class App extends React.Component {
 
       // changing the color of the button if the list of persons is showed
       style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "salmon",
+        color: "white"
+      };
     }
 
     const classes = []; // this returns "red bold"
@@ -146,7 +155,7 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Radium(App);
 
 // state = {
 //   persons: [
