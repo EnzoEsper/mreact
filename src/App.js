@@ -1,6 +1,6 @@
 import React from "react";
 import Person from "./Person/Person";
-import Radium from "radium";
+import Radium, { StyleRoot } from "radium";
 
 class App extends React.Component {
   state = {
@@ -113,24 +113,25 @@ class App extends React.Component {
     }
 
     return (
-      <div className="App">
-        <h1>App component!</h1>
-        <p className={classes.join(" ")}> This is working! </p>
-        <button style={style} onClick={this.togglePersonsHandler}>
-          Toggle Persons
-        </button>
-        {/*
+      <StyleRoot>
+        <div className="App">
+          <h1>App component!</h1>
+          <p className={classes.join(" ")}> This is working! </p>
+          <button style={style} onClick={this.togglePersonsHandler}>
+            Toggle Persons
+          </button>
+          {/*
         Alterantive way to the button onClick function from above
         <button onClick={() => this.switchNameHandler("Maximilian")}>
           Switch Name
         </button>
         */}
 
-        {persons}
-        {/* this is an alternate way to do the same that the code from below  */}
+          {persons}
+          {/* this is an alternate way to do the same that the code from below  */}
 
-        {/* ternary expression to render the components conditionally*/}
-        {/* {this.state.showPersons === true ? (
+          {/* ternary expression to render the components conditionally*/}
+          {/* {this.state.showPersons === true ? (
           <div>
             <Person
               name={this.state.persons[0].name}
@@ -150,7 +151,8 @@ class App extends React.Component {
             />
           </div>
         ) : null} */}
-      </div>
+        </div>
+      </StyleRoot>
     );
   }
 }
