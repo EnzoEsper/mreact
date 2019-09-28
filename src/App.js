@@ -12,14 +12,21 @@ class App extends React.Component {
     showPersons: false
   };
 
-  nameChangedHandler = event => {
-    this.setState({
-      persons: [
-        { name: "Max", age: 16 },
-        { name: event.target.value, age: 23 },
-        { name: "Alex", age: 15 }
-      ]
+  nameChangedHandler = (event, personId) => {
+    // Devuelve el index de la persona a la que se le esta cambiando el nombre en el input
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === personId;
     });
+
+    // recupero la persona con el index anterior y creo un nuevo objeto para no mutar el state
+    const person = { ...this.state.persons[personIndex] };
+    person.name = event.target.value;
+
+    // creo un nuevo array de personas para no mutar el state y modifico la persona
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons });
   };
 
   deletePersonHandler = personIndex => {
@@ -60,6 +67,7 @@ class App extends React.Component {
                 age={person.age}
                 click={() => this.deletePersonHandler(index)}
                 key={person.id}
+                changed={event => this.nameChangedHandler(event, person.id)}
               />
             );
           })}
